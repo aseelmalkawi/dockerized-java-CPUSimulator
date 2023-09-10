@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:stable
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t aseelibrahimm/cpu:$CIRCLE_BUILD_NUM .
+            docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+            docker push aseelibrahimm/cpu:$CIRCLE_BUILD_NUM
