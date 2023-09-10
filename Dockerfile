@@ -1,4 +1,4 @@
 FROM openjdk:11
-COPY src/ .
-WORKDIR src
-ENTRYPOINT ["java", "Main.Main"]
+COPY ./out/production/DockerHelloWorld/ /tmp
+WORKDIR /tmp
+ENTRYPOINT ["java", "Main"]
